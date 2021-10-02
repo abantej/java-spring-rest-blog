@@ -13,10 +13,16 @@ import java.util.stream.Collectors;
 @Entity
 public class Author {
     public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Version
+    private Long version;
+
     private String firstname;
+
     private String lastname;
 
     @JsonIgnore
@@ -47,6 +53,14 @@ public class Author {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     public String getFirstName() {
